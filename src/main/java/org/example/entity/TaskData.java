@@ -1,5 +1,6 @@
 package org.example.entity;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -24,10 +25,10 @@ public class TaskData {
             case "carol" : return carolsTasks;
             case "all" : {
                 Set<Task> allTasks = new HashSet<>();
-                allTasks.addAll(annsTasks);
-                allTasks.addAll(bobsTasks);
-                allTasks.addAll(carolsTasks);
-                allTasks.addAll(unassignedTasks);
+                List<Set<Task>> tasksList = List.of(annsTasks, bobsTasks, carolsTasks, unassignedTasks);
+                for (Set<Task> tasks: tasksList){
+                    allTasks.addAll(tasks);
+                }
                 return allTasks;
             }
             default: return null;
